@@ -34,6 +34,12 @@ namespace pomodoroTimer.Model
 
         private SingletonDispatcherTimer _timer = SingletonDispatcherTimer.GetInstance;
         private MediaPlayer _player;
+
+        private void Play()
+        {
+            _player.Open(new Uri(@"E:\utils\PomodoroTimer\pomodoroTimer\Quiz-Results02-2.mp3"));
+            _player.Play();
+        }
         
         enum TimerState
         {
@@ -57,7 +63,6 @@ namespace pomodoroTimer.Model
             _timer.Tick += Timer_Tick;
 
             _player = new ();
-            _player.Open(new Uri(@"E:\utils\PomodoroTimer\pomodoroTimer\Quiz-Results02-2.mp3"));
 
             _state = TimerState.Start;
             this.Duration = duration;
@@ -74,9 +79,9 @@ namespace pomodoroTimer.Model
             }
             else
             {
+                Play();
                 if(_userState== UserState.Studying)
                 {
-                    _player.Play();
                     RemainingTime = (TimeSpan)BreakTime;
                     _userState = UserState.breaking;
                 }

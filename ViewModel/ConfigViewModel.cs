@@ -50,6 +50,7 @@ namespace pomodoroTimer.ViewModel
 
             TimerModel.BreakTime = _config.BreakDuration;
             TimerModel.RemainingTime = _config.StudyDuration;
+            TimerModel.Duration = _config.StudyDuration;
             HiddenWindow();
         }
         
